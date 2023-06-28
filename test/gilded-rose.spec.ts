@@ -127,4 +127,23 @@ describe('Gilded Rose', function () {
         expect(updatedItems[2].quality).to.equal(80);
         expect(updatedItems[2].sellIn).to.eq(100);
     });
+
+    it('should correctly update Conjured Mana Cake quality', function () {
+        const items = [
+            new Item('Conjured Mana Cake', 2, 10),
+            new Item('Conjured Mana Cake', 0, 5),
+        ];
+
+        const gildedRose = new GildedRose(items);
+        const updatedItems = gildedRose.updateQuality();
+
+        expect(updatedItems[0].name).to.equal('Conjured Mana Cake');
+        expect(updatedItems[0].quality).to.equal(8);
+        expect(updatedItems[0].sellIn).to.equal(1);
+
+        expect(updatedItems[1].name).to.equal('Conjured Mana Cake');
+        expect(updatedItems[1].quality).to.equal(1);
+        expect(updatedItems[1].sellIn).to.equal(-1);
+
+    });
 });
